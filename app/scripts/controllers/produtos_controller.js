@@ -13,7 +13,7 @@ angular.module('quitandaApp')
     produtos_service.dados_tabela()
       .then(function (data) {
         $scope.carregando = false;
-        $scope.lista_dados_tabela = data;
+        $scope.lista_dados_tabela = data.data;
       }, function (reason) {
         console.log(reason);
       })
