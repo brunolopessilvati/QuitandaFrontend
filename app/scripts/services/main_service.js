@@ -2,21 +2,30 @@
 
 /**
  * @ngdoc function
- * @name quitandaApp.controller:MainCtrl
+ * @name quitandaApp.service:MainService
  * @description
- * # MainCtrl
- * Controller of the quitandaApp
+ * # MainService
+ * MainService of the quitandaApp
  */
 angular.module('quitandaApp')
-    .service("main_service",["$http", function($http){
+    .service("MainService",["$http", function($http){
+        function _find_tipos_produtos(){
+             return $http({
+                    method: 'GET',
+                    url: "http://localhost:8090/tipo-produto/find-all"
+                });
+            };
+
         function _dados_resumo (){
              return $http({
                     method: 'GET',
-                    url: "http://localhost:8090/estoque/find"
+                    url: "http://localhost:8090/estoque/find-resumo-estoque"
                 });
             };
+            
         return {
-            dados_resumo :_dados_resumo
+            dados_resumo :_dados_resumo,
+            find_tipos_produtos : _find_tipos_produtos
         };
 
 
